@@ -10,8 +10,7 @@ public class GetDataFromUrl {
         RestTemplate restTemplate = new RestTemplate();
         try {
             return restTemplate.getForObject(url, String.class);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new PageException(ResultInfoConstants.INVALID_SITE);
         }
     }

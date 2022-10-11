@@ -15,8 +15,7 @@ public class Account {
     private final boolean fav;
     private final boolean like;
 
-    public AccountTable toAccountTable()
-    {
-        return new AccountTable(this.email,this.url,false,false,false);
+    public AccountTable toAccountTable() {
+        return new AccountTable(this.email, this.url, false, false, false);
     }
 }

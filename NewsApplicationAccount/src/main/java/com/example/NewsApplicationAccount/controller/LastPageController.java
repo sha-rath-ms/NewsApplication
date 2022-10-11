@@ -15,22 +15,19 @@ public class LastPageController {
 
     @PostMapping("/last-page")
     @ResponseStatus(HttpStatus.OK)
-    public LastPage getLastPage(@RequestBody String email)
-    {
+    public LastPage getLastPage(@RequestBody String email) {
         return lastPageService.getLastPage(email);
     }
 
     @PostMapping("/last-page/insert")
     @ResponseStatus(HttpStatus.OK)
-    public void insertLastPage(@RequestBody LastPage lastPage)
-    {
+    public void insertLastPage(@RequestBody LastPage lastPage) {
         lastPageService.insertLastPage(lastPage);
     }
 
     @DeleteMapping("/last-page/delete")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteLastPage(@RequestBody String email)
-    {
+    public void deleteLastPage(@RequestBody String email) {
         lastPageService.deleteLastPage(email);
     }
 }

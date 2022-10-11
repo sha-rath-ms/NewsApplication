@@ -19,22 +19,19 @@ public class AccountController {
 
     @PostMapping("/bookmark")
     @ResponseStatus(HttpStatus.OK)
-    public Account bookmark(@RequestHeader(HttpHeaders.AUTHORIZATION) String token,@RequestHeader("url") String url)
-    {
-        return accountService.bookmark(new Account(jwtTokenUtil.getUsernameFromToken(token),url));
+    public Account bookmark(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestHeader("url") String url) {
+        return accountService.bookmark(new Account(jwtTokenUtil.getUsernameFromToken(token), url));
     }
 
     @PostMapping("/like")
     @ResponseStatus(HttpStatus.OK)
-    public Account like(@RequestHeader(HttpHeaders.AUTHORIZATION) String token,@RequestHeader("url") String url)
-    {
-        return accountService.like(new Account(jwtTokenUtil.getUsernameFromToken(token),url));
+    public Account like(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestHeader("url") String url) {
+        return accountService.like(new Account(jwtTokenUtil.getUsernameFromToken(token), url));
     }
 
     @PostMapping("/fav")
     @ResponseStatus(HttpStatus.OK)
-    public Account fav(@RequestHeader(HttpHeaders.AUTHORIZATION) String token,@RequestHeader("url") String url)
-    {
-        return accountService.fav(new Account(jwtTokenUtil.getUsernameFromToken(token),url));
+    public Account fav(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestHeader("url") String url) {
+        return accountService.fav(new Account(jwtTokenUtil.getUsernameFromToken(token), url));
     }
 }

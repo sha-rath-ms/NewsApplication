@@ -30,13 +30,11 @@ public class AccountTable {
         this.like = like;
     }
 
-    public Account toAccount()
-    {
-        return new Account(this.email,this.url,this.bookmark,this.fav,this.like);
+    public Account toAccount() {
+        return new Account(this.email, this.url, this.bookmark, this.fav, this.like);
     }
 
-    public ResponseAccount toResponseAccount()
-    {
-        return new ResponseAccount(this.url,this.bookmark,this.fav,this.like);
+    public ResponseAccount toResponseAccount() {
+        return new ResponseAccount(this.url, this.bookmark, this.fav, this.like);
     }
 }

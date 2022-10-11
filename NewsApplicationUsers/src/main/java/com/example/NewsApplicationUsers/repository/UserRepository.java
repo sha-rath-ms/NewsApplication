@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<UsersTable,Long> {
+public interface UserRepository extends JpaRepository<UsersTable, Long> {
     Optional<UsersTable> findByEmailId(String email);
 
     @NotNull Optional<UsersTable> findById(Long id);

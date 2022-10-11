@@ -18,16 +18,15 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public Long createUser(Users users) {
-        if(userRepository.findByEmailId(users.getEmailId()).isPresent())
+        if (userRepository.findByEmailId(users.getEmailId()).isPresent())
             throw new ValidationException(ResultInfoConstants.DUPLICATE_USER);
         UsersTable usersTable = users.toUsersTable(passwordEncoder);
         userRepository.save(usersTable);
         return usersTable.getId();
     }
 
-    public void changePassword(String password,String emailId)
-    {
-        if(!userRepository.findByEmailId(emailId).isPresent())
+    public void changePassword(String password, String emailId) {
+        if (!userRepository.findByEmailId(emailId).isPresent())
             throw new ValidationException(ResultInfoConstants.INVALID_USER);
         UsersTable usersTable = userRepository.findByEmailId(emailId).get();
         usersTable.setPassword(password);

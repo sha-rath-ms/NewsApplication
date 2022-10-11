@@ -19,7 +19,7 @@ public class MyUserDetails implements UserDetails {
     }
 
     public UsersTable toUserTable() {
-        return new UsersTable(password,username);
+        return new UsersTable(password, username);
     }
 
     @Override

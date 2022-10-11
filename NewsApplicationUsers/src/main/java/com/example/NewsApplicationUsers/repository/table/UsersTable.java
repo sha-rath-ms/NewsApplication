@@ -1,6 +1,5 @@
 package com.example.NewsApplicationUsers.repository.table;
 
-import com.example.NewsApplicationUsers.entity.Users;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

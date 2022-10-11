@@ -27,8 +27,7 @@ public class LastPageTable {
     private String category;
     private String page;
 
-    public LastPage toLastPage()
-    {
-        return new LastPage(this.email,this.getUrl(),this.homepage,this.headlines,this.everything,this.sources,this.q,this.country,this.category,this.page);
+    public LastPage toLastPage() {
+        return new LastPage(this.email, this.getUrl(), this.homepage, this.headlines, this.everything, this.sources, this.q, this.country, this.category, this.page);
     }
 }

@@ -19,8 +19,7 @@ public class Users {
     @NotNull
     private final String emailId;
 
-    public UsersTable toUsersTable(PasswordEncoder passwordEncoder)
-    {
-        return new UsersTable(this.firstName,this.lastName,passwordEncoder.encode(this.password),this.emailId);
+    public UsersTable toUsersTable(PasswordEncoder passwordEncoder) {
+        return new UsersTable(this.firstName, this.lastName, passwordEncoder.encode(this.password), this.emailId);
     }
 }

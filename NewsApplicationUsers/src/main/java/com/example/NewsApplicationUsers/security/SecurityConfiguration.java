@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -36,11 +35,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("user/signup**")
                 .anonymous();
         http.addFilter(customAuthenticationFilter());
-//        http.addFilterBefore(new CustomAuthorizationFilter(jwtTokenUtil, myUserDetailsService), UsernamePasswordAuthenticationFilter.class);
     }
 
-    private CustomAuthenticationFilter customAuthenticationFilter() throws Exception
-    {
+    private CustomAuthenticationFilter customAuthenticationFilter() throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean(), jwtTokenUtil);
         customAuthenticationFilter.setFilterProcessesUrl("/user/login");
         return customAuthenticationFilter;

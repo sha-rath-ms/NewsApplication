@@ -40,7 +40,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/home")
     public ResponseWrapper home(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
-        accountService.insertLastPage(new LastPage(jwtTokenUtil.getUsernameFromToken(token), null, true, false, false, null,null,null,null,null));
+        accountService.insertLastPage(new LastPage(jwtTokenUtil.getUsernameFromToken(token), null, true, false, false, null, null, null, null, null));
         return new ResponseWrapper(ResultInfoConstants.SUCCESS, articleService.home());
     }
 
@@ -58,7 +58,7 @@ public class UserController {
     @GetMapping()
     public ResponseWrapper get(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         LastPage lastPage = accountService.lastPage(jwtTokenUtil.getUsernameFromToken(token));
-        if (lastPage.getUrl()!=null) {
+        if (lastPage.getUrl() != null) {
             Account account = new Account(jwtTokenUtil.getUsernameFromToken(token), lastPage.getUrl());
             return new ResponseWrapper<ResponseAccountAndArticle>(ResultInfoConstants.SUCCESS, new ResponseAccountAndArticle(accountService.get(account), articleService.getArticle(lastPage.getUrl())));
         } else if (lastPage.isEverything())
@@ -71,14 +71,14 @@ public class UserController {
 
     @GetMapping("/headlines")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseWrapper getHeadlines(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestParam(value = "sources",required = false) String sources, @RequestParam(value = "q",required = false) String q, @RequestParam(value = "country",required = false) String country, @RequestParam(value = "category",required = false) String category, @RequestParam(value = "page", defaultValue = "1") String page) {
+    public ResponseWrapper getHeadlines(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestParam(value = "sources", required = false) String sources, @RequestParam(value = "q", required = false) String q, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "page", defaultValue = "1") String page) {
         accountService.insertLastPage(new LastPage(jwtTokenUtil.getUsernameFromToken(token), null, false, true, false, sources, q, country, category, page));
         return new ResponseWrapper(ResultInfoConstants.SUCCESS, articleService.getHeadlines(sources, q, country, category, page));
     }
 
     @GetMapping("/everything")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseWrapper getEverything(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestParam(value = "sources",required = false) String sources, @RequestParam(value = "q",required = false) String q, @RequestParam(value = "country",required = false) String country, @RequestParam(value = "category",required = false) String category, @RequestParam(value = "page", defaultValue = "1") String page) {
+    public ResponseWrapper getEverything(@RequestHeader(HttpHeaders.AUTHORIZATION) String token, @RequestParam(value = "sources", required = false) String sources, @RequestParam(value = "q", required = false) String q, @RequestParam(value = "country", required = false) String country, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "page", defaultValue = "1") String page) {
         accountService.insertLastPage(new LastPage(jwtTokenUtil.getUsernameFromToken(token), null, false, false, true, sources, q, country, category, page));
         return new ResponseWrapper(ResultInfoConstants.SUCCESS, articleService.getEverything(sources, q, country, category, page));
     }

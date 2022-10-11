@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ValidationException extends RuntimeException{
+public class ValidationException extends RuntimeException {
     private ResultInfo resultInfo;
 }
